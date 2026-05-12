@@ -307,6 +307,11 @@ def health_check():
 
 
 # ========== 启动应用 ==========
+@app.route('/')
+def index():
+    """首页"""
+    return app.send_static_file('index.html')
+
 if __name__ == '__main__':
     print("=" * 50)
     print("AI模拟面试应用启动中...")
@@ -317,5 +322,6 @@ if __name__ == '__main__':
     print("访问地址: http://localhost:5000")
     print("按 Ctrl+C 停止服务")
     print("=" * 50)
-
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, port=port, host='0.0.0.0')
