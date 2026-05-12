@@ -140,6 +140,10 @@ def get_evaluation(question, answer, position):
 
 
 # ========== API 路由 ==========
+@app.route('/')
+def index():
+    """首页"""
+    return app.send_static_file('index.html')
 @app.route('/api/positions', methods=['GET'])
 def get_positions():
     """获取支持的岗位列表"""
